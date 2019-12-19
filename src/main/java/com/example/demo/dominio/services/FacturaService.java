@@ -12,6 +12,9 @@ public interface FacturaService {
 	
 	public Factura buscarPorId (Id numero);
 		
-	public Factura eliminarPorId (Id numero);
+	public Factura eliminar (Id numero);
+
+	public Factura actualizar(Factura factura, Id numero);
+	
 
 }

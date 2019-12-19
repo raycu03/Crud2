@@ -38,11 +38,18 @@ public class FacturaAdapter implements FacturaService{
 	}
 
 	@Override
-	public Factura eliminarPorId(Id numero) {
+	public Factura eliminar(Id numero) {
 		Factura factura = buscarPorId(numero);
 		facturaRepository.deleteById(numero.getId());
 		return factura;
 		
+	}
+
+	@Override
+	public Factura actualizar(Factura factura, Id numero) {
+		Factura f = buscarPorId(numero);
+		guardar(factura);
+		return factura;
 	}
 
 }

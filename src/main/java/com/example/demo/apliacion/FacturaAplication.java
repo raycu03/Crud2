@@ -3,6 +3,7 @@ package com.example.demo.apliacion;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.example.demo.dominio.model.Factura;
 import com.example.demo.dominio.services.FacturaService;
 import com.example.demo.dominio.services.ProductoService;
 import com.example.demo.exceptions.RegistroNoEncontradoExeception;
@@ -16,15 +17,15 @@ import com.example.demo.shared.dominio.Id;
 
 public class FacturaAplication {
 	private FacturaService facturaService;
-	private ProductoService productoService;
 	private FacturaMapper facturaMapper;
+	private ProductoService productoService;
 	private ProductoMapper productoMapper;
 	
 	public FacturaAplication(FacturaService facturaService, ProductoService productoService,
 			FacturaMapper facturaMapper, ProductoMapper productoMapper) {
 			this.facturaService = facturaService;
-			this.productoService = productoService;
 			this.facturaMapper = facturaMapper;
+			this.productoService = productoService;
 			this.productoMapper = productoMapper;
 	}
 
@@ -68,7 +69,12 @@ public class FacturaAplication {
 	}
 	
 	public void eliminar (Long numero) {
-		FacturaRest factura = facturaMapper.dominiodtoapi(facturaService.eliminarPorId(new Id(numero)));
+		FacturaRest factura = facturaMapper.dominiodtoapi(facturaService.eliminar(new Id(numero)));
+	}
+	
+	public FacturaRest actualizar(FacturaRest factura , Long numero) {
+		FacturaRest act = facturaMapper.dominiodtoapi(facturaService.actualizar(facturaMapper.dtoDominioapi(factura), new Id(numero)));
+		return  act;
 	}
 	
 	
