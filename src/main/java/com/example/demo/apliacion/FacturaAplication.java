@@ -22,10 +22,10 @@ public class FacturaAplication {
 	
 	public FacturaAplication(FacturaService facturaService, ProductoService productoService,
 			FacturaMapper facturaMapper, ProductoMapper productoMapper) {
-		this.facturaService = facturaService;
-		this.productoService = productoService;
-		this.facturaMapper = facturaMapper;
-		this.productoMapper = productoMapper;
+			this.facturaService = facturaService;
+			this.productoService = productoService;
+			this.facturaMapper = facturaMapper;
+			this.productoMapper = productoMapper;
 	}
 
 	public Double calcularValorTotal (List<ItemRest> items) {
@@ -54,25 +54,21 @@ public class FacturaAplication {
 		cargarProductos(factura.getItems());
 		factura.setValor_total(calcularValorTotal(factura.getItems()));
 		FacturaRest obtenida = facturaMapper.dominiodtoapi(facturaService.guardar(facturaMapper.dtoDominioapi(factura)));
-		System.out.println("Factura -> "+obtenida);
 		return obtenida;
 	}
 	
 	public List<FacturaRest>  mostrarTodos () {
 		List<FacturaRest> facturas = facturaMapper.dominiodtoapi(facturaService.buscarTodos());
-		System.out.println("Facturas -> "+facturas);
 		return facturas;
 	}
 	
 	public FacturaRest mostrarUno ( Long numero) {
 		FacturaRest factura = facturaMapper.dominiodtoapi(facturaService.buscarPorId(new Id(numero)));
-		System.out.println("Factura -> "+factura);
 		return factura;
 	}
 	
 	public void eliminar (Long numero) {
 		FacturaRest factura = facturaMapper.dominiodtoapi(facturaService.eliminarPorId(new Id(numero)));
-		System.out.println("Eliminado -> "+factura);
 	}
 	
 	

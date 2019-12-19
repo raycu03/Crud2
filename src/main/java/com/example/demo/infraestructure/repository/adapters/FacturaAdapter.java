@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dominio.model.Factura;
 import com.example.demo.dominio.services.FacturaService;
+import com.example.demo.exceptions.RegistroNoEncontradoExeception;
 import com.example.demo.infraestructure.mapper.FacturaMapper;
 import com.example.demo.infraestructure.repository.database.FacturaRepository;
 import com.example.demo.shared.dominio.Id;
@@ -32,8 +33,8 @@ public class FacturaAdapter implements FacturaService{
 
 	@Override
 	public Factura buscarPorId(Id numero) {
-		return null;
-		//return facturaMapper.dtoDominio(facturaRepository.findById(numero.getId()).orElseThrow(() -> new RegistroNoEncontradoExeception()));
+
+		return facturaMapper.dtoDominio(facturaRepository.findById(numero.getId()).orElseThrow(() -> new RegistroNoEncontradoExeception()));
 	}
 
 	@Override
