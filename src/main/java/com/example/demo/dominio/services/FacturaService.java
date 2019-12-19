@@ -10,7 +10,7 @@ public interface FacturaService {
 	
 	public List<Factura> buscarTodos();
 	
-	public Factura buscarPorId (Id numero);
+	public Factura buscarId (Id numero);
 		
 	public Factura eliminar (Id numero);
 

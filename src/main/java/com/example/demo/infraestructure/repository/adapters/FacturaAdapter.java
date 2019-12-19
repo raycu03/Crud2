@@ -32,14 +32,14 @@ public class FacturaAdapter implements FacturaService{
 	}
 
 	@Override
-	public Factura buscarPorId(Id numero) {
+	public Factura buscarId(Id numero) {
 
 		return facturaMapper.dtoDominio(facturaRepository.findById(numero.getId()).orElseThrow(() -> new RegistroNoEncontradoExeception()));
 	}
 
 	@Override
 	public Factura eliminar(Id numero) {
-		Factura factura = buscarPorId(numero);
+		Factura factura = buscarId(numero);
 		facturaRepository.deleteById(numero.getId());
 		return factura;
 		
@@ -47,7 +47,7 @@ public class FacturaAdapter implements FacturaService{
 
 	@Override
 	public Factura actualizar(Factura factura, Id numero) {
-		Factura f = buscarPorId(numero);
+		Factura f = buscarId(numero);
 		guardar(factura);
 		return factura;
 	}

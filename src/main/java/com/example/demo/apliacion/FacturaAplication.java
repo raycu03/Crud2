@@ -64,7 +64,7 @@ public class FacturaAplication {
 	}
 	
 	public FacturaRest mostrarUno ( Long numero) {
-		FacturaRest factura = facturaMapper.dominiodtoapi(facturaService.buscarPorId(new Id(numero)));
+		FacturaRest factura = facturaMapper.dominiodtoapi(facturaService.buscarId(new Id(numero)));
 		return factura;
 	}
 	
